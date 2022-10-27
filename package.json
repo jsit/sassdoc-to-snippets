@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Convert SassDoc markup to snippets files",
   "main": "dist/index.js",
+  "bin": "dist/sassdoc-to-snippets.js",
   "scripts": {
     "build": "babel src -d ./dist/"
   },

@@ -1,9 +1,9 @@
-export default (data) => {
-  let output;
+export const formatNeosnippet = (data) => {
+  let output = '';
 
   for (const datum of data) {
-    if (datum.name && (datum.context.type == 'mixin' || datum.context.type == 'function')) {
-      let parameters;
+    if (datum.name && (datum.context.type === 'mixin' || datum.context.type === 'function') && datum.context.scope !== 'private') {
+      let parameters = '';
       output += `snippet ${datum.name}\n`;
 
       if (datum.description) {
@@ -17,7 +17,7 @@ export default (data) => {
 
       if (datum?.parameter?.length > 0) {
         for (const [idx, parameter] of datum.parameter.entries()) {
-          parameters += `\$\{${idx + 1}:${parameter.name}\}`
+          parameters += `\$\{${idx + 1}:\$${parameter.name}\}`
           parameters += idx + 1 !== datum.parameter.length ? ', ' : '';
         }
       }
@@ -25,7 +25,7 @@ export default (data) => {
       if (parameters) {
         output += `\t${datum.name}(${parameters})`;
         if (datum.context.type == 'mixin') {
-          output += ' {\n\t\t${0}\n\t}'
+          output += ' {\n\t\t$0\n\t}'
         }
       } else {
         output += `\t${datum.name}`;
