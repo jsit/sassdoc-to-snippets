@@ -9,15 +9,17 @@ Can be used in Gulp et al. (I think).
 ## Usage
 
 ```sh
-sassdoc-to-snippets ./scss -f vscode -o ./scss.json
+sassdoc-to-snippets ./scss/ -f vscode -o ./scss.json
 ```
+
+(requires trailing slash for directories)
 
 ### Flags
 
 - `-o filename`: Output to `filename`
 - `-f format`: Render snippets in `format` format
 - `-p prefix`: Prefix snippet expansions with `prefix` (for when you're
-    namespacing with [Sass modules](https://sass-lang.com/documentation/at-rules/use)
+    namespacing with [Sass modules](https://sass-lang.com/documentation/at-rules/use))
 - `--debug`: Output the processed SassDoc data as well as the resulting snippets
 
 ## Example
