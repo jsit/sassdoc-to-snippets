@@ -12,19 +12,19 @@ function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol 
 function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 var formatVscode = function formatVscode(data) {
-  var output = '';
+  var output = "";
   var _iterator = _createForOfIteratorHelper(data),
     _step;
   try {
     for (_iterator.s(); !(_step = _iterator.n()).done;) {
       var datum = _step.value;
-      if (datum.name && (datum.context.type == 'mixin' || datum.context.type == 'function')) {
+      if (datum.name && (datum.context.type === "mixin" || datum.context.type === "function")) {
         var _datum$parameter;
-        var parameters = '';
-        output += "\"".concat(datum.name, "\": {\n");
-        output += "\t\"prefix\": \"".concat(datum.name, "\",\n");
+        var parameters = "";
+        output += "\"".concat(datum.snippetTrigger, "\": {\n");
+        output += "\t\"prefix\": \"".concat(datum.snippetTrigger, "\",\n");
         if (datum.description) {
-          output += "\t\"description\": \"".concat(datum.description.split('\n').slice(0, 1), "\",\n");
+          output += "\t\"description\": \"".concat(datum.description.split("\n").slice(0, 1), "\",\n");
         }
         output += '\t"body": [\n';
         if ((datum === null || datum === void 0 ? void 0 : (_datum$parameter = datum.parameter) === null || _datum$parameter === void 0 ? void 0 : _datum$parameter.length) > 0) {
@@ -36,7 +36,7 @@ var formatVscode = function formatVscode(data) {
                 idx = _step2$value[0],
                 parameter = _step2$value[1];
               parameters += "${".concat(idx + 1, ":$").concat(parameter.name, "}");
-              parameters += idx + 1 !== datum.parameter.length ? ', ' : '';
+              parameters += idx + 1 !== datum.parameter.length ? ", " : "";
             }
           } catch (err) {
             _iterator2.e(err);
@@ -45,16 +45,17 @@ var formatVscode = function formatVscode(data) {
           }
         }
         if (parameters) {
-          output += "\t\t\"".concat(datum.name, "(").concat(parameters, ")");
-          if (datum.context.type == 'mixin') {
+          var _datum$context, _datum$context$value;
+          output += "\t\t\"".concat(datum.prefix).concat(datum.name, "(").concat(parameters, ")");
+          if (((_datum$context = datum.context) === null || _datum$context === void 0 ? void 0 : (_datum$context$value = _datum$context.value) === null || _datum$context$value === void 0 ? void 0 : _datum$context$value.indexOf("@content")) > -1) {
             output += ' {",\n\t\t"\t$0",\n\t\t"}",\n';
           } else {
             output += '",\n';
           }
         } else {
-          output += "\t\t\"".concat(datum.name, "\",\n");
+          output += "\t\t\"".concat(datum.prefix).concat(datum.name, "\",\n");
         }
-        output += '\t],\n},\n\n';
+        output += "\t],\n},\n\n";
       }
     }
   } catch (err) {

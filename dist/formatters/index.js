@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var _neosnippet = require("./neosnippet.js");
+var _neosnippet = require("./neosnippet");
 Object.keys(_neosnippet).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _neosnippet[key]) return;
@@ -14,7 +14,7 @@ Object.keys(_neosnippet).forEach(function (key) {
     }
   });
 });
-var _vscode = require("./vscode.js");
+var _vscode = require("./vscode");
 Object.keys(_vscode).forEach(function (key) {
   if (key === "default" || key === "__esModule") return;
   if (key in exports && exports[key] === _vscode[key]) return;

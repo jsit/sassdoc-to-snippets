@@ -10,34 +10,35 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
 var src = process.argv[2];
 
 // Get the specified snippet format from the -f flag
-var format = process.argv.indexOf('-f') > -1 ? process.argv[process.argv.indexOf('-f') + 1] : '';
+var format = process.argv.indexOf("-f") > -1 ? process.argv[process.argv.indexOf("-f") + 1] : "";
+var prefix = process.argv.indexOf("-p") > -1 ? process.argv[process.argv.indexOf("-p") + 1] : "";
 
 // Get the output file from the -o flag
-var outputFile = process.argv.indexOf('-o') > -1 ? process.argv[process.argv.indexOf('-o') + 1] : '';
-var echoSnippets = /*#__PURE__*/function () {
+var outputFile = process.argv.indexOf("-o") > -1 ? process.argv[process.argv.indexOf("-o") + 1] : "";
+var debug = process.argv.indexOf("--debug") > -1;
+var generateSnippets = /*#__PURE__*/function () {
   var _ref = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var snippets;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             _context.next = 2;
             return (0, _index["default"])({
-              "format": format,
-              "src": src,
-              "dist": outputFile
+              format: format,
+              src: src,
+              dist: outputFile,
+              debug: debug,
+              prefix: prefix
             });
           case 2:
-            snippets = _context.sent;
-          case 3:
           case "end":
             return _context.stop();
         }
       }
     }, _callee);
   }));
-  return function echoSnippets() {
+  return function generateSnippets() {
     return _ref.apply(this, arguments);
   };
 }();
-echoSnippets();
+generateSnippets();

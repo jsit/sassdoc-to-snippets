@@ -1,2 +1,2 @@
-export * from './neosnippet.js';
-export * from './vscode.js';
+export * from "./neosnippet";
+export * from "./vscode";
