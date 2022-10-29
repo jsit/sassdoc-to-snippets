@@ -1,6 +1,6 @@
 {
   "name": "sassdoc-to-snippets",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Convert SassDoc markup to snippets files",
   "main": "./dist/index.js",
   "bin": "./dist/sassdoc-to-snippets.js",
@@ -26,5 +26,9 @@
     "eslint-config-prettier": "^8.5.0",
     "eslint-config-standard": "^17.0.0",
     "eslint-plugin-prettier": "^4.2.1"
+  },
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/jsit/sassdoc-to-snippets.git"
   }
 }
