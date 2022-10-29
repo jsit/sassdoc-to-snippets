@@ -1,21 +1,30 @@
 {
   "name": "sassdoc-to-snippets",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Convert SassDoc markup to snippets files",
   "main": "dist/index.js",
   "bin": "dist/sassdoc-to-snippets.js",
   "scripts": {
     "build": "babel src -d ./dist/"
   },
-  "author": "",
+  "author": {
+    "name": "Jay Sitter",
+    "email": "jay@jaysitter.com",
+    "url": "https://www.jaysitter.com"
+  },
   "license": "ISC",
   "dependencies": {
-    "@babel/cli": "^7.19.3",
-    "@babel/core": "^7.19.6",
-    "@babel/preset-env": "^7.19.4",
-    "babel-plugin-module-resolver": "^4.1.0",
     "glob": "^8.0.3",
     "path": "^0.12.7",
     "scss-sassdoc-parser": "^1.0.3"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.19.3",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard": "^17.0.0",
+    "eslint-plugin-prettier": "^4.2.1"
   }
 }
