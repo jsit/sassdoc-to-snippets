@@ -58,3 +58,9 @@ snippet add-padding
 abbr Add padding around an element
   add-padding(${1:$value})
 ```
+
+## Contributing
+
+Edit in `src`, run `npm run build` to compile.
+
+Know of a snippet syntax for some other editor? Please file an Issue or PR!
