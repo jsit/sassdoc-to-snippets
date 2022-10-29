@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import sassdocToSnippets from "./index.js";
 
 // Grab the first argument from the command line, the thing we're going to parse
