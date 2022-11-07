@@ -1,12 +1,8 @@
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports["default"] = void 0;
 var _util = _interopRequireDefault(require("util"));
-var _nodeFs = _interopRequireDefault(require("node:fs"));
+var _fs = _interopRequireDefault(require("fs"));
 var _scssSassdocParser = require("scss-sassdoc-parser");
 var _glob = require("glob");
 var _utils = require("./utils");
@@ -24,12 +20,12 @@ function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try
 function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
 var sassdocToSnippets = /*#__PURE__*/function () {
   var _ref2 = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee(_ref) {
-    var src, dist, format, debug, prefix, data, output, files, _iterator, _step, _data, file, parseResults, _data2, _parseResults;
+    var src, dest, format, debug, prefix, data, output, files, _iterator, _step, _data, file, parseResults, _data2, _parseResults;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
-            src = _ref.src, dist = _ref.dist, format = _ref.format, debug = _ref.debug, prefix = _ref.prefix;
+            src = _ref.src, dest = _ref.dest, format = _ref.format, debug = _ref.debug, prefix = _ref.prefix;
             // The data array will store all our parsed SassDoc data
             data = []; // The output will be the text of the snippet file
             output = "";
@@ -40,7 +36,7 @@ var sassdocToSnippets = /*#__PURE__*/function () {
             console.log("Argument required, directory or file.");
             return _context.abrupt("return", null);
           case 8:
-            if (!_nodeFs["default"].lstatSync(src).isDirectory()) {
+            if (!_fs["default"].lstatSync(src).isDirectory()) {
               _context.next = 31;
               break;
             }
@@ -78,7 +74,7 @@ var sassdocToSnippets = /*#__PURE__*/function () {
             _context.next = 40;
             break;
           case 31:
-            if (!_nodeFs["default"].lstatSync(src).isFile()) {
+            if (!_fs["default"].lstatSync(src).isFile()) {
               _context.next = 38;
               break;
             }
@@ -96,7 +92,7 @@ var sassdocToSnippets = /*#__PURE__*/function () {
             // Add new `snippetTrigger` property for use and deduplication
             // Add `prefix` if one has been specified
             data.map(function (datum) {
-              datum.prefix = prefix;
+              datum.prefix = prefix || "";
               datum.snippetTrigger = datum.name;
               return datum;
             });
@@ -116,8 +112,8 @@ var sassdocToSnippets = /*#__PURE__*/function () {
             output = (0, _formatters.formatVscode)(data);
           case 48:
             // If an output file is specified, write to it
-            if (dist) {
-              _nodeFs["default"].appendFile(dist, output, function (err) {
+            if (dest) {
+              _fs["default"].appendFile(dest, output, function (err) {
                 err && console.log(err);
               });
             }
@@ -139,5 +135,4 @@ var sassdocToSnippets = /*#__PURE__*/function () {
     return _ref2.apply(this, arguments);
   };
 }();
-var _default = sassdocToSnippets;
-exports["default"] = _default;
+module.exports = sassdocToSnippets;

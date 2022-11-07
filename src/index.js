@@ -1,11 +1,11 @@
 import util from "util";
-import fs from "node:fs";
+import fs from "fs";
 import { parse } from "scss-sassdoc-parser";
 import { glob } from "glob";
 import { dedupe } from "./utils";
 import { formatNeosnippet, formatVscode } from "./formatters";
 
-const sassdocToSnippets = async ({ src, dist, format, debug, prefix }) => {
+const sassdocToSnippets = async ({ src, dest, format, debug, prefix }) => {
   // The data array will store all our parsed SassDoc data
   let data = [];
 
@@ -38,7 +38,7 @@ const sassdocToSnippets = async ({ src, dist, format, debug, prefix }) => {
     // Add new `snippetTrigger` property for use and deduplication
     // Add `prefix` if one has been specified
     data.map((datum) => {
-      datum.prefix = prefix;
+      datum.prefix = prefix || "";
       datum.snippetTrigger = datum.name;
       return datum;
     });
@@ -58,8 +58,8 @@ const sassdocToSnippets = async ({ src, dist, format, debug, prefix }) => {
     }
 
     // If an output file is specified, write to it
-    if (dist) {
-      fs.appendFile(dist, output, (err) => {
+    if (dest) {
+      fs.appendFile(dest, output, (err) => {
         err && console.log(err);
       });
     }
@@ -75,4 +75,4 @@ const sassdocToSnippets = async ({ src, dist, format, debug, prefix }) => {
   }
 };
 
-export default sassdocToSnippets;
+module.exports = sassdocToSnippets;

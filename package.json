@@ -7,6 +7,9 @@
   "scripts": {
     "build": "babel src -d ./dist/"
   },
+  "engines": {
+    "node": ">=14"
+  },
   "author": {
     "name": "Jay Sitter",
     "email": "jay@jaysitter.com",
@@ -28,7 +31,7 @@
     "eslint-plugin-prettier": "^4.2.1"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/jsit/sassdoc-to-snippets.git"
+    "type": "git",
+    "url": "https://github.com/jsit/sassdoc-to-snippets.git"
   }
 }
