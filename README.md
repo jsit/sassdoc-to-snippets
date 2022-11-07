@@ -4,7 +4,7 @@ Convert [SassDoc](http://sassdoc.com)-commented Sass to snippets files.
 
 Ignores `private`ly-scoped mixins/functions/variables.
 
-Can be used in Gulp et al. (I think).
+Can be used in Gulp et al.
 
 ## Usage
 
@@ -13,6 +13,19 @@ sassdoc-to-snippets ./scss/ -f vscode -o ./scss.json
 ```
 
 (requires trailing slash for directories)
+
+## Gulp
+
+```javascript
+const sassdocToSnippets = require('sassdoc-to-snippets');
+
+gulp.task('sassdoc-to-snippets', function() {
+  return sassdocToSnippets({
+    src: './stylesheets/scss/',
+    dest: './snippets/scss.json',
+  })
+});
+```
 
 ### Flags
 
