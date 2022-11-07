@@ -1,6 +1,6 @@
 {
   "name": "sassdoc-to-snippets",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Convert SassDoc markup to snippets files",
   "main": "./dist/index.js",
   "bin": "./dist/sassdoc-to-snippets.js",
